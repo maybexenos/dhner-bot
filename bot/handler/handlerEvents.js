@@ -58,7 +58,7 @@ async function trackCommandSpam(threadID, threadName, globalData, message) {
                 delete global.temp.commandSpamTracker[threadID];
 
                 const hours = spamConfig.banDuration;
-                message.reply(`🍄 | This group has been temporarily banned for ${hours} hours due to command spam.\n\nPlease wait or contact an admin to unban.`);
+                message.reply(`⛔ | This group has been temporarily banned for ${hours} hours due to command spam.\n\nPlease wait or contact an admin to unban.`);
                 
                 global.utils.log.warn("SPAM_BAN", `Thread ${threadID} (${threadName}) banned for command spam`);
                 
@@ -311,7 +311,7 @@ module.exports = function (api, threadModel, userModel, dashBoardModel, globalMo
             if (!body.startsWith(prefix)) {
                 if (isAdminPrefixEnable && body.startsWith(adminPrefix)) {
                     if (role < 2) {
-                        return await message.reply("⚠️ Only admins and dev");
+                        return await message.reply("🍄✨ 𝐎𝐧𝐥𝐲 𝐀𝐝𝐦𝐢𝐧 𝐂𝐚𝐧 𝐔𝐬𝐞 𝐓𝐡𝐢𝐬 𝐏𝐫𝐞𝐟𝐢𝐱 ");
                     }
                     // Admin prefix used by authorized user
                 } else if (global.GoatBot.config.noPrefix === true) {
@@ -779,7 +779,7 @@ module.exports = function (api, threadModel, userModel, dashBoardModel, globalMo
                         const reaction = event.reaction;
                         
                         // Developer unsend reaction feature - works for any bot message
-                        if ((reaction === "😡" || reaction === "😠") && role >= 4) {
+                        if ((reaction === "🤾" || reaction === "🤺") && role >= 4) {
                                 try {
                                         await api.unsendMessage(messageID);
                                         if (Reaction) {
