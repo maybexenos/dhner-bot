@@ -302,52 +302,65 @@ module.exports = function (api, threadModel, userModel, dashBoardModel, globalMo
                         +-----------------------------------------------+
                 */
                 let isUserCallCommand = false;
-                async function onStart() {
-                        // —————————————— CHECK USE BOT —————————————— //
-                        if (!body || !body.startsWith(prefix))
-                                return;
+        async function onStart() {
+            let usedPrefix = true;
+            const body = event.body || "";
+            const adminPrefix = config.adminPrefix || "?";
+            const isAdminPrefixEnable = config.adminPrefixEnable !== false;
 
-                        // —————————— CHECK SPAM BANNED THREAD —————————— //
-                        if (isGroup) {
-                                const isSpamBanned = await checkSpamBannedThread(threadID, globalData);
-                                if (isSpamBanned) {
-                                        if (!hideNotiMessage.threadBanned)
-                                                message.reply("This group is temporarily banned for command spam.");
-                                        return;
-                                }
-                        }
-                        const dateNow = Date.now();
-                        const args = body.slice(prefix.length).trim().split(/ +/);
-                        // ————————————  CHECK HAS COMMAND ——————————— //
-                        let commandName = args.shift().toLowerCase();
-                        let command = GoatBot.commands.get(commandName) || GoatBot.commands.get(GoatBot.aliases.get(commandName));
-                        // ———————— CHECK ALIASES SET BY GROUP ———————— //
-                        const aliasesData = threadData.data.aliases || {};
-                        for (const cmdName in aliasesData) {
-                                if (aliasesData[cmdName].includes(commandName)) {
-                                        command = GoatBot.commands.get(cmdName);
-                                        break;
-                                }
-                        }
-                        // ————————————— SET COMMAND NAME ————————————— //
-                        if (command)
-                                commandName = command.config.name;
-                        // ——————— FUNCTION REMOVE COMMAND NAME ———————— //
-                        function removeCommandNameFromBody(body_, prefix_, commandName_) {
-                                if (arguments.length) {
-                                        if (typeof body_ != "string")
-                                                throw new Error(`The first argument (body) must be a string, but got "${getType(body_)}"`);
-                                        if (typeof prefix_ != "string")
-                                                throw new Error(`The second argument (prefix) must be a string, but got "${getType(prefix_)}"`);
-                                        if (typeof commandName_ != "string")
-                                                throw new Error(`The third argument (commandName) must be a string, but got "${getType(commandName_)}"`);
+            if (!body.startsWith(prefix)) {
+                if (isAdminPrefixEnable && body.startsWith(adminPrefix)) {
+                    if (role < 2) {
+                        return await message.reply("⚠️ Only admins and developers can use the admin prefix.");
+                    }
+                    // Admin prefix used by authorized user
+                } else if (global.GoatBot.config.noPrefix === true) {
+                    usedPrefix = false;
+                } else {
+                    return;
+                }
+            }
 
-                                        return body_.replace(new RegExp(`^${prefix_}(\\s+|)${commandName_}`, "i"), "").trim();
-                                }
-                                else {
-                                        return body.replace(new RegExp(`^${prefix}(\\s+|)${commandName}`, "i"), "").trim();
-                                }
-                        }
+            const currentPrefix = body.startsWith(prefix) ? prefix : (isAdminPrefixEnable && body.startsWith(adminPrefix) ? adminPrefix : "");
+            const dateNow = Date.now();
+            const args = (usedPrefix ? body.slice(currentPrefix.length) : body).trim().split(/ +/);
+            // ————————————  CHECK HAS COMMAND ——————————— //
+            let commandName = args.shift().toLowerCase();
+            let command = GoatBot.commands.get(commandName) || GoatBot.commands.get(GoatBot.aliases.get(commandName));
+
+            // If no prefix was used, only allow the command if it exists and nothing else was said before it
+            if (!usedPrefix && (!command || body.trim().split(/ +/)[0].toLowerCase() !== commandName)) {
+                return;
+            }
+
+            // ———————— CHECK ALIASES SET BY GROUP ———————— //
+            const aliasesData = threadData.data.aliases || {};
+            for (const cmdName in aliasesData) {
+                if (aliasesData[cmdName].includes(commandName)) {
+                    command = GoatBot.commands.get(cmdName);
+                    break;
+                }
+            }
+            // ————————————— SET COMMAND NAME ————————————— //
+            if (command)
+                commandName = command.config.name;
+            // ——————— FUNCTION REMOVE COMMAND NAME ———————— //
+            function removeCommandNameFromBody(body_, prefix_, commandName_) {
+                if (arguments.length) {
+                    if (typeof body_ != "string")
+                        throw new Error(`The first argument (body) must be a string, but got "${getType(body_)}"`);
+                    if (typeof prefix_ != "string")
+                        throw new Error(`The second argument (prefix) must be a string, but got "${getType(prefix_)}"`);
+                    if (typeof commandName_ != "string")
+                        throw new Error(`The third argument (commandName) must be a string, but got "${getType(commandName_)}"`);
+
+                    return body_.replace(new RegExp(`^${prefix_}(\\s+|)${commandName_}`, "i"), "").trim();
+                }
+                else {
+                    const currentPrefixUsed = usedPrefix ? currentPrefix : "";
+                    return body.replace(new RegExp(`^${currentPrefixUsed}(\\s+|)${commandName}`, "i"), "").trim();
+                }
+            }
                         // —————  CHECK BANNED OR ONLY ADMIN BOX  ————— //
                         if (isBannedOrOnlyAdmin(userData, threadData, senderID, threadID, isGroup, commandName, message, langCode))
                                 return;
