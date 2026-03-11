@@ -58,7 +58,7 @@ async function trackCommandSpam(threadID, threadName, globalData, message) {
                 delete global.temp.commandSpamTracker[threadID];
 
                 const hours = spamConfig.banDuration;
-                message.reply(`⛔ | This group has been temporarily banned for ${hours} hours due to command spam.\n\nPlease wait or contact an admin to unban.`);
+                message.reply(`🍄 | This group has been temporarily banned for ${hours} hours due to command spam.\n\nPlease wait or contact an admin to unban.`);
                 
                 global.utils.log.warn("SPAM_BAN", `Thread ${threadID} (${threadName}) banned for command spam`);
                 
@@ -311,7 +311,7 @@ module.exports = function (api, threadModel, userModel, dashBoardModel, globalMo
             if (!body.startsWith(prefix)) {
                 if (isAdminPrefixEnable && body.startsWith(adminPrefix)) {
                     if (role < 2) {
-                        return await message.reply("⚠️ Only admins and developers can use the admin prefix.");
+                        return await message.reply("⚠️ Only admins and dev");
                     }
                     // Admin prefix used by authorized user
                 } else if (global.GoatBot.config.noPrefix === true) {
