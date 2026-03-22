@@ -1,0 +1,155 @@
+# index.js
+Goat.newVersionDetected=「 ʏᴏᴜ ᴀʀᴇ ᴜsɪɴɢ ᴠᴇʀsɪᴏɴ %1 _ ᴛʜᴇ ʟᴀᴛᴇsᴛ ᴠᴇʀsɪᴏɴ ɪs %2. ᴘʟᴇᴀsᴇ ᴜᴘᴅᴀᴛᴇ ᴛᴏ ᴜsᴇ ᴛʜᴇ ʙᴏᴛ ʙᴇᴛᴛᴇʀ ʙʏ ᴛʏᴘɪɴɢ: %3 」
+Goat.autoRestart1=「 ʙᴏᴛ ᴡɪʟʟ ᴀᴜᴛᴏ ʀᴇsᴛᴀʀᴛ ɪɴ %1 ⏳ 」
+Goat.autoRestart2=「 ʙᴏᴛ ᴡɪʟʟ ᴀᴜᴛᴏ ʀᴇsᴛᴀʀᴛ ʙʏ ᴄʀᴏɴ ᴊᴏʙ: %1 ⏳ 」
+Goat.googleApiTokenExpired=「 ɢᴏᴏɢʟᴇ ᴀᴘɪ ʀᴇғʀᴇsʜ ᴛᴏᴋᴇɴ ʜᴀs ᴇxᴘɪʀᴇᴅ ᴏʀ ʙᴇᴇɴ ʀᴇᴠᴏᴋᴇᴅ _ ᴘʟᴇᴀsᴇ ɢᴇᴛ ᴀ ɴᴇᴡ ᴛᴏᴋᴇɴ ᴀᴛ https://developers.google.com/oauthplayground/ 」
+
+# bot/login/login.js
+login.currentlyLogged=「 ʟᴏɢɪɴ ɪɴ ᴘʀᴏɢʀᴇss 」
+login.notFoundDirAccount=「 ᴄᴀɴɴᴏᴛ ғɪɴᴅ ғɪʟᴇ %1 」
+login.loginToken=「 ʟᴏɢɪɴ ᴡɪᴛʜ ᴀᴄᴄᴇss ᴛᴏᴋᴇɴ 」
+login.loginCookieString=「 ʟᴏɢɪɴ ᴡɪᴛʜ ᴄᴏᴏᴋɪᴇ sᴛʀɪɴɢ 」
+login.loginCookieNetscape=「 ʟᴏɢɪɴ ᴡɪᴛʜ ᴄᴏᴏᴋɪᴇ ɴᴇᴛsᴄᴀᴘᴇ 」
+login.loginCookieArray=「 ʟᴏɢɪɴ ᴡɪᴛʜ ᴄᴏᴏᴋɪᴇ ᴀʀʀᴀʏ 」
+login.loginPassword=「 ʟᴏɢɪɴ ᴡɪᴛʜ ᴇᴍᴀɪʟ & ᴘᴀssᴡᴏʀᴅ... 」
+login.accountError=「 ᴘʟᴇᴀsᴇ ᴇɴᴛᴇʀ ᴛʜᴇ ғᴜʟʟ ᴘᴇʀᴍɪssɪᴏɴ ᴛᴏᴋᴇɴ ɪɴ ᴛʜᴇ ғᴏʀᴍ ᴏғ %1 ᴏʀ ᴄᴏᴏᴋɪᴇ sᴛʀɪɴɢ %2 ᴏʀ ᴄᴏᴏᴋɪᴇ ᴀʀʀᴀʏ:\n[\n  { name: %3, value: %4 },\n  { name: %5, value: %6 }\n]\n ᴏʀ\n[\n  { key: %3, value: %4 },\n  { key: %5, value: %6 }\n]\nɪɴᴛᴏ ᴛʜᴇ ғɪʟᴇ %7 」
+login.cannotFindAccount=「 ᴄᴀɴɴᴏᴛ ғɪɴᴅ ғᴀᴄᴇʙᴏᴏᴋ ᴀᴄᴄᴏᴜɴᴛ _ ᴄʜᴏᴏsᴇ ᴏɴᴇ ᴏғ ᴛʜᴇ ғᴏʟʟᴏᴡɪɴɢ ᴏᴘᴛɪᴏɴs: 」
+login.chooseAccount=「 ʟᴏɢɪɴ ᴡɪᴛʜ ᴇᴍᴀɪʟ ᴀɴᴅ ᴘᴀssᴡᴏʀᴅ 」
+login.chooseToken=「 ʟᴏɢɪɴ ᴡɪᴛʜ ᴛᴏᴋᴇɴ ғᴜʟʟ ᴘᴇʀᴍɪssɪᴏɴ 」
+login.chooseCookieString=「 ʟᴏɢɪɴ ᴡɪᴛʜ ᴄᴏᴏᴋɪᴇ sᴛʀɪɴɢ 」
+login.chooseCookieArray=「 ʟᴏɢɪɴ ᴡɪᴛʜ ᴄᴏᴏᴋɪᴇ ᴀʀʀᴀʏ 」
+login.loginWith=「 ʏᴏᴜ ᴄʜᴏᴏsᴇ ᴛᴏ %1 」
+login.inputEmail=» ᴘʟᴇᴀsᴇ ᴇɴᴛᴇʀ ʏᴏᴜʀ ᴇᴍᴀɪʟ (ɪᴅ) ᴏʀ ᴘʜᴏɴᴇ ɴᴜᴍʙᴇʀ:
+login.inputPassword=» ᴘʟᴇᴀsᴇ ᴇɴᴛᴇʀ ʏᴏᴜʀ ᴘᴀssᴡᴏʀᴅ:
+login.input2FA=» ᴘʟᴇᴀsᴇ ᴇɴᴛᴇʀ ᴛʜᴇ 2FA ᴄᴏᴅᴇ (ʟᴇᴀᴠᴇ ʙʟᴀɴᴋ ɪғ ɴᴏᴛ ᴇɴᴀʙʟᴇᴅ):
+login.inputToken=» ᴘʟᴇᴀsᴇ ᴇɴᴛᴇʀ ʏᴏᴜʀ ᴛᴏᴋᴇɴ ғᴜʟʟ ᴘᴇʀᴍɪssɪᴏɴ (sᴛᴀʀᴛ ᴡɪᴛʜ EAAAA):
+login.inputCookieString=» ᴘʟᴇᴀsᴇ ᴇɴᴛᴇʀ ʏᴏᴜʀ ᴄᴏᴏᴋɪᴇ sᴛʀɪɴɢ:
+login.inputCookieArray=» ᴘʟᴇᴀsᴇ ᴇɴᴛᴇʀ ʏᴏᴜʀ ᴄᴏᴏᴋɪᴇ ᴀʀʀᴀʏ:
+login.refreshCookie=「 ʀᴇғʀᴇsʜɪɴɢ ᴄᴏᴏᴋɪᴇ... 🔄 」
+login.refreshCookieError=「 ᴀɴ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ ᴡʜᴇɴ ʀᴇғʀᴇsʜɪɴɢ ᴛʜᴇ ᴄᴏᴏᴋɪᴇ ✗ 」
+login.refreshCookieSuccess=「 ʀᴇғʀᴇsʜᴇᴅ ᴄᴏᴏᴋɪᴇ sᴜᴄᴄᴇssғᴜʟʟʏ _ ʀᴇsᴛᴀʀᴛ ᴛʜᴇ ʙᴏᴛ ᴛᴏ ᴀᴘᴘʟʏ ᴛʜᴇ ɴᴇᴡ ᴄᴏᴏᴋɪᴇ ✓ 」
+login.refreshCookieWarning=「 ʏᴏᴜ ʜᴀᴠᴇ ᴇɴᴀʙʟᴇᴅ ᴀᴜᴛᴏ ʀᴇғʀᴇsʜ ᴄᴏᴏᴋɪᴇ ᴍᴏᴅᴇ _ ʙᴜᴛ ᴇᴍᴀɪʟ ᴀɴᴅ ᴘᴀssᴡᴏʀᴅ ᴀʀᴇ ɴᴏᴛ ᴄᴏɴғɪɢᴜʀᴇᴅ ɪɴ config.json 」
+login.tokenError=「 ᴛᴏᴋᴇɴ ɪs ɪɴᴠᴀʟɪᴅ ᴏʀ ᴇxᴘɪʀᴇᴅ _ ᴘʟᴇᴀsᴇ ᴇɴᴛᴇʀ ᴛʜᴇ ғᴜʟʟ ᴘᴇʀᴍɪssɪᴏɴ ᴛᴏᴋᴇɴ ɪɴ ᴛʜᴇ ғᴏʀᴍ ᴏғ %1 ɪɴᴛᴏ ᴛʜᴇ ғɪʟᴇ %2 」
+login.cookieError=「 ᴄᴏᴏᴋɪᴇ ɪs ɪɴᴠᴀʟɪᴅ ᴏʀ ᴇxᴘɪʀᴇᴅ ✗ 」
+login.loginPasswordError=「 ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ ᴡʜᴇɴ ʟᴏɢɢɪɴɢ ɪɴ ᴡɪᴛʜ ᴇᴍᴀɪʟ & ᴘᴀssᴡᴏʀᴅ ɪɴ config.json 」
+login.loginSuccess=「 sᴜᴄᴄᴇssғᴜʟ ʟᴏɢɪɴ ✓ 」
+login.loginError=「 ᴀɴ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ ᴡʜɪʟᴇ sɪɢɴɪɴɢ ɪɴ ✗ 」
+login.openDashboardSuccess=「 sᴜᴄᴄᴇssғᴜʟʟʏ ᴏᴘᴇɴᴇᴅ ʙᴏᴛ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ ᴘᴀɢᴇ ✓ 」
+login.openDashboardError=「 ᴀɴ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ ᴡʜᴇɴ ᴏᴘᴇɴɪɴɢ ᴛʜᴇ ʙᴏᴛ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ ᴘᴀɢᴇ ✗ 」
+login.changeGbanData=「 ᴅᴀᴛᴀ ʜᴀs ʙᴇᴇɴ ᴄʜᴀɴɢᴇᴅ _ ɪᴛ ɪs ᴄᴜʀʀᴇɴᴛʟʏ ɪᴍᴘᴏssɪʙʟᴇ ᴛᴏ ʟᴀᴜɴᴄʜ ᴛʜᴇ ʙᴏᴛ ✗ 」
+login.errorNoti=「 ᴀɴ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ ᴡʜᴇɴ ʀᴇᴛʀɪᴇᴠɪɴɢ ᴛʜᴇ ᴍᴇssᴀɢᴇ ✗ 」
+login.refreshFbstateSuccess=「 ʀᴇғʀᴇsʜᴇᴅ %1 ғɪʟᴇ ✓ 」
+login.refreshFbstateError=「 ᴀɴ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ ᴡʜᴇɴ ʀᴇғʀᴇsʜɪɴɢ ᴛʜᴇ %1 ғɪʟᴇ ✗ 」
+login.youAreBanned=「 ʏᴏᴜ ʜᴀᴠᴇ ʙᴇᴇɴ ʙᴀɴɴᴇᴅ ғʀᴏᴍ ᴛʜᴇ ɢᴏᴀᴛ-ʙᴏᴛ ᴘʀᴏᴊᴇᴄᴛ ⛔ 」
+login.runBot=「 ʟᴀᴜɴᴄʜ ʙᴏᴛ sᴜᴄᴄᴇssғᴜʟʟʏ _ sᴛᴀʀᴛ ʀᴇᴄᴇɪᴠɪɴɢ ᴍᴇssᴀɢᴇs ғʀᴏᴍ ᴜsᴇʀs ✓ 」
+login.notLoggedIn=「 ᴀɴ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ _ ᴘʟᴇᴀsᴇ ᴄʜᴇᴄᴋ ʏᴏᴜʀ ғᴀᴄᴇʙᴏᴏᴋ ᴀᴄᴄᴏᴜɴᴛ ᴀɢᴀɪɴ ✗ 」
+login.callBackError=「 ᴀɴ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ ᴡʜᴇɴ ᴄᴀʟʟʙᴀᴄᴋ ʟɪsᴛᴇɴMQTT ✗ 」
+login.userBanned=「 ʏᴏᴜ'ᴠᴇ ʙᴇᴇɴ ʙᴀɴɴᴇᴅ ғʀᴏᴍ ᴜsɪɴɢ ᴛʜᴇ ʙᴏᴛ ⛔ 」
+login.checkGbanError=「 ᴀɴ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ ᴡʜɪʟᴇ ᴄʜᴇᴄᴋɪɴɢ GBAN _ ᴛʀʏ ᴜᴘᴅᴀᴛɪɴɢ ᴛᴏ ᴛʜᴇ ʟᴀᴛᴇsᴛ ᴠᴇʀsɪᴏɴ 」
+login.gbanMessage=「 ʏᴏᴜ ʜᴀᴠᴇ ʙᴇᴇɴ ʙᴀɴɴᴇᴅ ᴏɴ %1 ⛔\n» ʀᴇᴀsᴏɴ: %2\n» ᴛɪᴍᴇ: %3 」
+login.gbanMessageToDate=「 ʏᴏᴜ ʜᴀᴠᴇ ʙᴇᴇɴ ʙᴀɴɴᴇᴅ ᴏɴ %1 ⛔\n» ʀᴇᴀsᴏɴ: %2\n» ᴛɪᴍᴇ: %3\n» ᴛᴏ ᴅᴀᴛᴇ: %4 」
+login.gbanAdminMessage=「 ᴜsᴇʀ %1 ʜᴀs ʙᴇᴇɴ ʙᴀɴɴᴇᴅ ᴏɴ %2 ⛔\n» ʀᴇᴀsᴏɴ: %3 」
+login.openServerUptimeSuccess=「 🚀 ᴏᴘᴇɴᴇᴅ ᴜᴘᴛɪᴍᴇ sᴇʀᴠᴇʀ: %1 」
+login.openServerUptimeError=「 ᴀɴ ᴇʀʀᴏʀ ʜᴀs ᴏᴄᴄᴜʀʀᴇᴅ _ ᴄᴀɴɴᴏᴛ ᴏᴘᴇɴ sᴇʀᴠᴇʀ ᴜᴘᴛɪᴍᴇ ✗ 」
+login.restartListenMessage=「 ʟɪsᴛᴇɴMQTT ʀᴇsᴛᴀʀᴛ ᴇɴᴀʙʟᴇᴅ ᴇᴠᴇʀʏ %1 」
+login.stopRestartListenMessage=「 ʟɪsᴛᴇɴMQTT ʀᴇsᴛᴀʀᴛ ᴅɪsᴀʙʟᴇᴅ 」
+login.restartListenMessageError=「 ᴀɴ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ ᴡʜᴇɴ ʀᴇsᴛᴀʀᴛɪɴɢ ʟɪsᴛᴇɴMQTT ✗ 」
+login.restartListenMessage2=「 sᴜᴄᴄᴇssғᴜʟʟʏ ʀᴇsᴛᴀʀᴛᴇᴅ ʟɪsᴛᴇɴMQTT ✓ 」
+login.refreshCookieAfter=「 ʀᴇғʀᴇsʜɪɴɢ ᴄᴏᴏᴋɪᴇ ᴀғᴛᴇʀ %1 🔄 」
+login.listenMqttClose=「 ʟɪsᴛᴇɴMQTT ᴄʟᴏsᴇᴅ 」
+login.listenMqttCloseByUser=「 ʟɪsᴛᴇɴMQTT ᴄʟᴏsᴇᴅ ʙʏ ᴜsᴇʀ 」
+login.retryCheckLiveCookie=「 ʀᴇᴛʀʏɪɴɢ ᴛᴏ ᴄʜᴇᴄᴋ ᴄᴏᴏᴋɪᴇ... %1 🔄 」
+login.startBotSuccess=「 ʙᴏᴛ ʜᴀs ʙᴇᴇɴ sᴛᴀʀᴛᴇᴅ sᴜᴄᴄᴇssғᴜʟʟʏ _ sᴛᴀʀᴛ ʀᴇᴄᴇɪᴠɪɴɢ ᴍᴇssᴀɢᴇs ғʀᴏᴍ ᴜsᴇʀs ✓ 」
+
+version.tooOldVersion=「 ʏᴏᴜ ᴀʀᴇ ᴜsɪɴɢ ᴀ ᴛᴏᴏ ᴏʟᴅ ᴠᴇʀsɪᴏɴ ᴏғ ɢᴏᴀᴛ-ʙᴏᴛ _ ᴘʟᴇᴀsᴇ ᴜᴘᴅᴀᴛᴇ ᴛᴏ ᴛʜᴇ ʟᴀᴛᴇsᴛ ᴠᴇʀsɪᴏɴ ʙʏ ᴛʏᴘɪɴɢ: %1 」
+
+# bot/custom.js
+custom.refreshedFb_dtsg=「 ʀᴇғʀᴇsʜᴇᴅ fb_dtsg ᴀɴᴅ jazoest sᴜᴄᴄᴇssғᴜʟʟʏ ✓ 」
+custom.refreshedFb_dtsgError=「 ᴀɴ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ ᴡʜᴇɴ ʀᴇғʀᴇsʜɪɴɢ fb_dtsg ᴀɴᴅ jazoest ✗ 」
+
+# bot/login/loadData.js
+loadData.loadThreadDataSuccess=「 ʟᴏᴀᴅᴇᴅ %1 ɢʀᴏᴜᴘ's ᴅᴀᴛᴀ sᴜᴄᴄᴇssғᴜʟʟʏ ✓ 」
+loadData.loadUserDataSuccess=「 ʟᴏᴀᴅᴇᴅ %1 ᴜsᴇʀ's ᴅᴀᴛᴀ sᴜᴄᴄᴇssғᴜʟʟʏ ✓ 」
+loadData.refreshingThreadData=「 ᴜᴘᴅᴀᴛɪɴɢ ᴛʜᴇ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ᴏғ ᴛʜᴇ ɢʀᴏᴜᴘs... 🔄 」
+loadData.refreshThreadDataSuccess=「 ᴜᴘᴅᴀᴛᴇᴅ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ᴏғ %1 ɢʀᴏᴜᴘ ✓ 」
+loadData.refreshThreadDataError=「 sᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ ᴡʀᴏɴɢ ᴡʜᴇɴ ᴜᴘᴅᴀᴛɪɴɢ ᴛʜᴇ ɢʀᴏᴜᴘs ɪɴғᴏʀᴍᴀᴛɪᴏɴ ✗ 」
+
+# bot/login/loadScripts.js
+loadScripts.loadScriptsError=「 ᴛʜᴇ %1 ғɪʟᴇs ʜᴀᴠᴇ ᴀɴ ᴇʀʀᴏʀ ᴅᴜʀɪɴɢ ʟᴏᴀᴅɪɴɢ ✗ 」
+loadScripts.loadScriptsNotMatchOrigin=「 ᴛʜᴇ %1 ғɪʟᴇs ᴅᴏ ɴᴏᴛ ᴍᴀᴛᴄʜ ᴛʜᴇ ᴏʀɪɢɪɴᴀʟ ғɪʟᴇs ᴏɴ ᴛʜᴇ ɢɪᴛʜᴜʙ ᴘʀᴏᴊᴇᴄᴛ _ ᴍᴀᴋᴇ sᴜʀᴇ ᴛʜᴇsᴇ ᴄᴏᴍᴍᴀɴᴅ ғɪʟᴇs ᴀʀᴇ ʀᴇʟɪᴀʙʟᴇ: 」
+loadScripts.NOT_FOUND=「 ɴᴏᴛ ғᴏᴜɴᴅ ɪɴ ᴛʜᴇ ᴏʀɪɢɪɴᴀʟ sᴏᴜʀᴄᴇ ᴄᴏᴅᴇ: 」
+loadScripts.NOT_MATCH=「 ᴅᴏᴇs ɴᴏᴛ ᴍᴀᴛᴄʜ ᴛʜᴇ ᴏʀɪɢɪɴᴀʟ sᴏᴜʀᴄᴇ ᴄᴏᴅᴇ: 」
+
+# bot/login/socketIO.js
+socketIO.connected=「 ᴄᴏɴɴᴇᴄᴛᴇᴅ ᴛᴏ socket.io sᴇʀᴠᴇʀ ✓ 」
+socketIO.error=「 ᴀɴ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ ᴡʜᴇɴ ᴄᴏɴɴᴇᴄᴛɪɴɢ ᴛᴏ ᴛʜᴇ socket.io sᴇʀᴠᴇʀ ✗ 」
+
+# bot/handler/handlerCheckData.js
+handlerCheckData.cantCreateThread=「 ɢʀᴏᴜᴘs ᴡɪᴛʜ ɪᴅ '%1' ᴄᴀɴɴᴏᴛ ʙᴇ ᴡʀɪᴛᴛᴇɴ ᴛᴏ ᴛʜᴇ ᴅᴀᴛᴀʙᴀsᴇ ✗ 」
+handlerCheckData.cantCreateUser=「 ᴜsᴇʀs ᴡɪᴛʜ ɪᴅ '%1' ᴄᴀɴɴᴏᴛ ʙᴇ ᴡʀɪᴛᴛᴇɴ ᴛᴏ ᴛʜᴇ ᴅᴀᴛᴀʙᴀsᴇ ✗ 」
+
+# bot/handler/handlerEvents.js
+handlerEvents.userBanned=「 ʏᴏᴜ ᴀʀᴇ ʙᴀɴɴᴇᴅ ғʀᴏᴍ ᴜsɪɴɢ ᴛʜᴇ ʙᴏᴛ ⛔\n» ʀᴇᴀsᴏɴ: %1\n» ᴛɪᴍᴇ: %2\n» ᴜsᴇʀ ɪᴅ: %3 」
+handlerEvents.threadBanned=「 ᴛʜɪs ɢʀᴏᴜᴘ ɪs ʙᴀɴɴᴇᴅ ғʀᴏᴍ ᴜsɪɴɢ ᴛʜᴇ ʙᴏᴛ ⛔\n» ʀᴇᴀsᴏɴ: %1\n» ᴛɪᴍᴇ: %2\n» ᴛʜʀᴇᴀᴅ ɪᴅ: %3 」
+handlerEvents.onlyAdminBox=「 ᴏɴʟʏ ɢʀᴏᴜᴘ ᴀᴅᴍɪɴs ᴄᴀɴ ᴜsᴇ ᴛʜᴇ ʙᴏᴛ ʜᴇʀᴇ 🔒 」
+handlerEvents.onlyAdminBot=「 ᴏɴʟʏ ʙᴏᴛ ᴀᴅᴍɪɴs ᴄᴀɴ ᴜsᴇ ᴛʜᴇ ʙᴏᴛ 🔒 」
+handlerEvents.commandNotFound=「 ɪᴛ's ᴊᴜsᴛ ᴍʏ ᴘʀᴇғɪx _ ᴛʏᴘᴇ %2ʜᴇʟᴘ ᴛᴏ sᴇᴇ ᴀʟʟ ᴄᴏᴍᴍᴀɴᴅs 😺 」
+handlerEvents.commandNotFound2=「 ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ᴅᴏᴇsɴ'ᴛ ᴇxɪsᴛ _ ᴛʏᴘᴇ %1ʜᴇʟᴘ ᴛᴏ sᴇᴇ ᴀʟʟ ᴄᴏᴍᴍᴀɴᴅs 😺 」
+handlerEvents.commandSyntaxError=「 ᴡʀᴏɴɢ sʏɴᴛᴀx _ ᴛʏᴘᴇ %1ʜᴇʟᴘ %2 ғᴏʀ ᴜsᴀɢᴇ 」
+handlerEvents.onlyAdmin=「 ᴏɴʟʏ ɢʀᴏᴜᴘ ᴀᴅᴍɪɴs ᴄᴀɴ ᴜsᴇ "%1" 🔒 」
+handlerEvents.onlyAdminToUseOnReply=「 ᴏɴʟʏ ɢʀᴏᴜᴘ ᴀᴅᴍɪɴs ᴄᴀɴ ᴜsᴇ ʀᴇᴘʟʏ ғᴏʀ "%1" 🔒 」
+handlerEvents.onlyAdminToUseOnReaction=「 ᴏɴʟʏ ɢʀᴏᴜᴘ ᴀᴅᴍɪɴs ᴄᴀɴ ᴜsᴇ ʀᴇᴀᴄᴛɪᴏɴs ғᴏʀ "%1" 🔒 」
+handlerEvents.onlyAdminBot2=「 ᴏɴʟʏ ʙᴏᴛ ᴀᴅᴍɪɴs ᴄᴀɴ ᴜsᴇ "%1" 🔒 」
+handlerEvents.onlyAdminBot2ToUseOnReply=「 ᴏɴʟʏ ʙᴏᴛ ᴀᴅᴍɪɴs ᴄᴀɴ ᴜsᴇ ʀᴇᴘʟʏ ғᴏʀ "%1" 🔒 」
+handlerEvents.onlyAdminBot2ToUseOnReaction=「 ᴏɴʟʏ ʙᴏᴛ ᴀᴅᴍɪɴs ᴄᴀɴ ᴜsᴇ ʀᴇᴀᴄᴛɪᴏɴs ғᴏʀ "%1" 🔒 」
+handlerEvents.waitingForCommand=「 ᴘʟᴇᴀsᴇ ᴡᴀɪᴛ %1s ʙᴇғᴏʀᴇ ᴜsɪɴɢ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ᴀɢᴀɪɴ ⏳ 」
+handlerEvents.errorOccurred=「 ᴇʀʀᴏʀ ɪɴ "%2" ✗\n\n%3 」
+handlerEvents.errorOccurred2=「 ᴇʀʀᴏʀ ɪɴ ᴏɴCʜᴀᴛ ғᴏʀ "%2" ✗\n\n%3 」
+handlerEvents.errorOccurred3=「 ᴇʀʀᴏʀ ɪɴ ᴏɴRᴇᴘʟʏ ғᴏʀ "%2" ✗\n\n%3 」
+handlerEvents.errorOccurred4=「 ᴇʀʀᴏʀ ɪɴ ᴏɴRᴇᴀᴄᴛɪᴏɴ ғᴏʀ "%2" ✗\n\n%3 」
+handlerEvents.errorOccurred5=「 ᴇʀʀᴏʀ ɪɴ ᴇᴠᴇɴᴛ "%2" ✗\n\n%3 」
+handlerEvents.errorOccurred6=「 ᴇʀʀᴏʀ ɪɴ ᴏɴEᴠᴇɴᴛ ғᴏʀ "%2" ✗\n\n%3 」
+handlerEvents.errorOccurred7=「 ᴇʀʀᴏʀ ɪɴ ᴏɴAɴʏEᴠᴇɴᴛ ғᴏʀ "%2" ✗\n\n%3 」
+handlerEvents.cannotFindCommandName=「 ᴄᴀɴ'ᴛ ғɪɴᴅ ᴛʜᴇ ᴄᴏᴍᴍᴀɴᴅ ғᴏʀ ᴛʜɪs ʀᴇᴘʟʏ ✗ 」
+handlerEvents.cannotFindCommand=「 ᴄᴀɴ'ᴛ ғɪɴᴅ ᴄᴏᴍᴍᴀɴᴅ "%1" ғᴏʀ ᴛʜɪs ʀᴇᴘʟʏ ✗ 」
+
+# bot/autoUptime.js
+autoUptime.autoUptimeTurnedOn=「 ᴀᴜᴛᴏUᴘᴛɪᴍᴇ ᴍᴏᴅᴇ ᴛᴜʀɴᴇᴅ ᴏɴ 🚀 」
+
+# database/controller/index.js
+indexController.connectingMongoDB=「 ᴄᴏɴɴᴇᴄᴛɪɴɢ ᴀ MONGODB ᴅᴀᴛᴀʙᴀsᴇ 」
+indexController.connectMongoDBSuccess=「 sᴜᴄᴄᴇssғᴜʟʟʏ ᴄᴏɴɴᴇᴄᴛᴇᴅ MongoDB ᴅᴀᴛᴀʙᴀsᴇ ✓ 」
+indexController.connectMongoDBError=「 ᴀɴ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ ᴡʜᴇɴ ᴄᴏɴɴᴇᴄᴛɪɴɢ MongoDB ᴅᴀᴛᴀʙᴀsᴇ: ✗ 」
+indexController.connectingMySQL=「 ᴄᴏɴɴᴇᴄᴛɪɴɢ ᴀ SQLITE ᴅᴀᴛᴀʙᴀsᴇ 」
+indexController.connectMySQLSuccess=「 sᴜᴄᴄᴇssғᴜʟʟʏ ᴄᴏɴɴᴇᴄᴛᴇᴅ SQLITE ᴅᴀᴛᴀʙᴀsᴇ ✓ 」
+indexController.connectMySQLError=「 ᴀɴ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ ᴡʜɪʟᴇ ᴄᴏɴɴᴇᴄᴛɪɴɢ ᴛᴏ SQLITE ᴅᴀᴛᴀʙᴀsᴇ: ✗ 」
+
+# updater.js
+updater.updateTooFast=「 ᴘʟᴇᴀsᴇ ᴡᴀɪᴛ ᴀᴛ ʟᴇᴀsᴛ 5 ᴍɪɴᴜᴛᴇs ᴀғᴛᴇʀ ᴛʜᴇ ʟᴀᴛᴇsᴛ ᴄᴏᴍᴍɪᴛ ᴛᴏ ᴜᴘᴅᴀᴛᴇ _ %1 ᴍɪɴᴜᴛᴇs %2 sᴇᴄᴏɴᴅs ʟᴇғᴛ ⏳ 」
+updater.latestVersion=「 ʏᴏᴜ ᴀʀᴇ ᴜsɪɴɢ ᴛʜᴇ ʟᴀᴛᴇsᴛ ᴠᴇʀsɪᴏɴ ✓ 」
+updater.cantFindVersion=「 ʏᴏᴜ ᴀʀᴇ ᴜsɪɴɢ ᴀɴ ᴜɴᴅᴇғɪɴᴇᴅ ᴠᴇʀsɪᴏɴ (%1) _ ᴘʟᴇᴀsᴇ ᴄʜᴇᴄᴋ ʏᴏᴜʀ package.json ʀ ✗ 」
+updater.newVersions=「 ᴛʜᴇʀᴇ ᴀʀᴇ %1 ɴᴇᴡ ᴠᴇʀsɪᴏɴs ᴛᴏ ᴜᴘᴅᴀᴛᴇ _ sᴛᴀʀᴛɪɴɢ ᴛᴏ ᴜᴘᴅᴀᴛᴇ... 🔄 」
+updater.updateSuccess=「 ᴜᴘᴅᴀᴛᴇ sᴜᴄᴄᴇssғᴜʟʟʏ%1 ✓ 」
+updater.configChanged=「 ᴛʜᴇ %1 ʜᴀs ʙᴇᴇɴ ᴄʜᴀɴɢᴇᴅ _ ᴘʟᴇᴀsᴇ ᴄʜᴇᴄᴋ ʏᴏᴜʀ config.json ғɪʟᴇ ᴀɢᴀɪɴ 」
+updater.installingPackages=「 ɪɴsᴛᴀʟʟɪɴɢ ᴅᴇᴘᴇɴᴅᴇɴᴄɪᴇs ғᴏʀ ʙᴏᴛ... 🔄 」
+updater.installSuccess=「 ɪɴsᴛᴀʟʟᴇᴅ ᴅᴇᴘᴇɴᴅᴇɴᴄɪᴇs sᴜᴄᴄᴇssғᴜʟʟʏ _ ʀᴇsᴛᴀʀᴛ ᴛʜᴇ ʙᴏᴛ ᴛᴏ ᴜsᴇ ᴛʜᴇ ɴᴇᴡ ᴠᴇʀsɪᴏɴ ✓ 」
+updater.backupSuccess=「 sᴜᴄᴄᴇssғᴜʟʟʏ ʙᴀᴄᴋᴇᴅ ᴜᴘ ᴄʜᴀɴɢᴇᴅ ғɪʟᴇs _ sᴇᴇ ɪɴ ᴛʜᴇ %1 ғᴏʟᴅᴇʀ ✓ 」
+updater.restartToApply=「 . ʀᴇsᴛᴀʀᴛ ᴛʜᴇ ʙᴏᴛ ᴛᴏ ᴀᴘᴘʟʏ ᴛʜᴇ ɴᴇᴡ ᴠᴇʀsɪᴏɴ 」
+updater.skipFile=「 ᴛʜᴇʀᴇ ɪs ᴀ ɴᴇᴡ ᴠᴇʀsɪᴏɴ ᴏғ ᴛʜᴇ %1 ғɪʟᴇ _ ʙᴜᴛ ʏᴏᴜ ʜᴀᴠᴇ sᴋɪᴘᴘᴇᴅ ᴛʜɪs ғɪʟᴇ ᴅᴜʀɪɴɢ ᴜᴘᴅᴀᴛᴇ ᴡɪᴛʜ ᴛʜᴇ ᴄᴏᴍᴍᴇɴᴛ %2 」
+
+# dashboard/routes/verifyfbid.js
+verifyfbid.sendCode=「 ʏᴏᴜʀ ᴠᴇʀɪғɪᴄᴀᴛɪᴏɴ ᴄᴏᴅᴇ ɪs:\n%1\nᴛʜᴇ ᴠᴇʀɪғɪᴄᴀᴛɪᴏɴ ᴄᴏᴅᴇ ɪs ᴠᴀʟɪᴅ ғᴏʀ %2 ᴍɪɴᴜᴛᴇs ⏳ 」
+
+# utils.js
+utils.errorOccurred=「 ✗ ᴀɴ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ:\n\n%1 」
+
+# for command
+command.restartedBot=「 ʙᴏᴛ ʜᴀs ʙᴇᴇɴ ʀᴇsᴛᴀʀᴛᴇᴅ 🔄 」
+
+# dashboard/app.js
+app.googleApiRefreshTokenExpired=「 ɢᴏᴏɢʟᴇ ᴀᴘɪ ʀᴇғʀᴇsʜ ᴛᴏᴋᴇɴ ʜᴀs ᴇxᴘɪʀᴇᴅ ᴏʀ ʙᴇᴇɴ ʀᴇᴠᴏᴋᴇᴅ _ ᴘʟᴇᴀsᴇ ɢᴇᴛ ᴀ ɴᴇᴡ ᴛᴏᴋᴇɴ ᴀᴛ https://developers.google.com/oauthplayground/ 」
+app.tooManyRequests=「 ᴛᴏᴏ ᴍᴀɴʏ ʀᴇǫᴜᴇsᴛs ɪɴ ᴛʜᴇ ʟᴀsᴛ ᴍɪɴᴜᴛᴇ _ ᴘʟᴇᴀsᴇ ᴛʀʏ ᴀɢᴀɪɴ ʟᴀᴛᴇʀ ⏳ 」
+app.notPermissionChangeFbstate=「 ʏᴏᴜ ᴅᴏ ɴᴏᴛ ʜᴀᴠᴇ ᴘᴇʀᴍɪssɪᴏɴ ᴛᴏ ᴄʜᴀɴɢᴇ ғʙsᴛᴀᴛᴇ ⛔ 」
+app.notFoundFbstate=「 ᴘʟᴇᴀsᴇ ᴇɴᴛᴇʀ ғʙsᴛᴀᴛᴇ 」
+app.changedFbstateSuccess=「 sᴜᴄᴄᴇssғᴜʟʟʏ ᴄʜᴀɴɢᴇᴅ ғʙsᴛᴀᴛᴇ ✓ 」
+app.serverError=「 sᴇʀᴠᴇʀ ᴇʀʀᴏʀ _ ᴘʟᴇᴀsᴇ ᴛʀʏ ᴀɢᴀɪɴ ʟᴀᴛᴇʀ ✗ 」

@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zero Two · Bot Info</title>
+  <link rel="icon" href="/images/logo.png" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --c1: #7c3aed;
+      --c2: #2563eb;
+      --c3: #06b6d4;
+      --c4: #a78bfa;
+      --c5: #f472b6;
+      --bg: #060610;
+    }
+
+    body {
+      background: var(--bg);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+      overflow-x: hidden;
+      padding: 20px;
+    }
+
+    /* ── Animated background ── */
+    .bg-layer {
+      position: fixed; inset: 0; z-index: 0; overflow: hidden;
+    }
+    .bg-layer::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 10%, rgba(124,58,237,.18) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 80% 80%, rgba(6,182,212,.14) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 40% at 50% 50%, rgba(244,114,182,.08) 0%, transparent 50%);
+      animation: bgPulse 8s ease-in-out infinite alternate;
+    }
+    @keyframes bgPulse {
+      from { opacity: .7; }
+      to   { opacity: 1; }
+    }
+
+    /* Stars */
+    .stars { position: absolute; inset: 0; }
+    .star {
+      position: absolute;
+      border-radius: 50%;
+      background: white;
+      animation: twinkle var(--d, 3s) ease-in-out infinite;
+      animation-delay: var(--delay, 0s);
+    }
+    @keyframes twinkle {
+      0%,100% { opacity: .1; transform: scale(1); }
+      50%      { opacity: .9; transform: scale(1.4); }
+    }
+
+    /* ── Outer glow ring ── */
+    .card-wrap {
+      position: relative; z-index: 1;
+      width: 100%; max-width: 440px;
+    }
+    .card-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 30px;
+      background: linear-gradient(135deg, var(--c1), var(--c3), var(--c5), var(--c1));
+      background-size: 300% 300%;
+      animation: borderSpin 5s linear infinite;
+      z-index: -1;
+      filter: blur(1px);
+    }
+    @keyframes borderSpin {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* ── Main card ── */
+    .card {
+      background: rgba(8, 8, 20, 0.92);
+      border-radius: 28px;
+      overflow: hidden;
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* Top gradient band */
+    .top-band {
+      height: 5px;
+      background: linear-gradient(90deg, var(--c1), var(--c3), var(--c5), var(--c1));
+      background-size: 300% auto;
+      animation: bandMove 4s linear infinite;
+    }
+    @keyframes bandMove {
+      from { background-position: 0% center; }
+      to   { background-position: 300% center; }
+    }
+
+    /* Hero section */
+    .hero {
+      padding: 36px 30px 28px;
+      text-align: center;
+      background: linear-gradient(180deg, rgba(124,58,237,.08) 0%, transparent 100%);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .logo-ring {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      margin: 0 auto 16px;
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, rgba(124,58,237,.3), rgba(6,182,212,.3));
+      border: 2px solid rgba(167,139,250,.4);
+      box-shadow: 0 0 30px rgba(124,58,237,.3), inset 0 0 20px rgba(124,58,237,.1);
+      animation: logoFloat 4s ease-in-out infinite;
+    }
+    .logo-ring img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; }
+    @keyframes logoFloat {
+      0%,100% { transform: translateY(0);   box-shadow: 0 0 30px rgba(124,58,237,.3); }
+      50%      { transform: translateY(-6px); box-shadow: 0 10px 40px rgba(124,58,237,.5); }
+    }
+
+    .welcome-txt {
+      font-family: 'Orbitron', monospace;
+      font-size: clamp(1.3rem, 6vw, 2rem);
+      font-weight: 900;
+      letter-spacing: 3px;
+      background: linear-gradient(90deg, #f472b6, #a78bfa, #38bdf8, #34d399, #a78bfa, #f472b6);
+      background-size: 300% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 4s linear infinite;
+      line-height: 1.2;
+    }
+    @keyframes shimmer {
+      from { background-position: 0% center; }
+      to   { background-position: 300% center; }
+    }
+
+    .sub-txt {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: .72rem;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.35);
+      margin-top: 6px;
+    }
+
+    /* Status pill */
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-top: 16px;
+      padding: 7px 18px;
+      border-radius: 50px;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: .78rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .status-pill.on {
+      background: rgba(52,211,153,.1);
+      border: 1px solid rgba(52,211,153,.35);
+      color: #34d399;
+      box-shadow: 0 0 20px rgba(52,211,153,.12);
+    }
+    .status-pill.off {
+      background: rgba(239,68,68,.1);
+      border: 1px solid rgba(239,68,68,.35);
+      color: #f87171;
+    }
+    .dot-live {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #34d399;
+      animation: pulseDot 1.4s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+    @keyframes pulseDot {
+      0%,100% { box-shadow: 0 0 0 0 rgba(52,211,153,.6); }
+      50%      { box-shadow: 0 0 0 6px rgba(52,211,153,.0); }
+    }
+
+    /* Section label */
+    .section-label {
+      padding: 18px 28px 6px;
+      font-family: 'Orbitron', monospace;
+      font-size: .58rem;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: rgba(167,139,250,.55);
+      text-align: center;
+    }
+
+    /* Info rows */
+    .info-list { padding: 4px 0 10px; }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      transition: background .2s;
+      cursor: default;
+    }
+    .info-item:last-child { border-bottom: none; }
+    .info-item:hover { background: rgba(255,255,255,.03); }
+
+    .ii-icon {
+      flex-shrink: 0;
+      width: 38px; height: 38px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .82rem;
+    }
+    .ic-pu { background: rgba(124,58,237,.2);  color: #a78bfa; }
+    .ic-bl { background: rgba(37,99,235,.2);   color: #60a5fa; }
+    .ic-pk { background: rgba(236,72,153,.2);  color: #f472b6; }
+    .ic-or { background: rgba(234,88,12,.2);   color: #fb923c; }
+    .ic-cy { background: rgba(8,145,178,.2);   color: #22d3ee; }
+    .ic-gr { background: rgba(5,150,105,.2);   color: #34d399; }
+    .ic-ye { background: rgba(202,138,4,.2);   color: #fbbf24; }
+    .ic-re { background: rgba(220,38,38,.2);   color: #f87171; }
+
+    .ii-text { flex: 1; min-width: 0; }
+    .ii-label {
+      font-size: .62rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.3);
+      margin-bottom: 2px;
+      font-family: 'Rajdhani', sans-serif;
+    }
+    .ii-value {
+      font-size: .98rem;
+      font-weight: 600;
+      color: #e2e8f0;
+      font-family: 'Space Grotesk', sans-serif;
+      word-break: break-word;
+    }
+    .ii-value.glow {
+      background: linear-gradient(90deg, #a78bfa, #38bdf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 700;
+    }
+    .ii-value.glow-pink {
+      background: linear-gradient(90deg, #f472b6, #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 700;
+    }
+
+    /* Divider */
+    .divider {
+      height: 1px;
+      margin: 0 24px;
+      background: linear-gradient(90deg, transparent, rgba(167,139,250,.3), transparent);
+    }
+
+    /* Stats */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      padding: 16px 24px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .stat-box {
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 14px;
+      padding: 14px 12px;
+      text-align: center;
+      transition: border-color .2s, transform .2s;
+    }
+    .stat-box:hover { border-color: rgba(167,139,250,.3); transform: translateY(-2px); }
+    .stat-num {
+      font-family: 'Orbitron', monospace;
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #a78bfa, #38bdf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .stat-lbl {
+      font-size: .65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.3);
+      margin-top: 3px;
+      font-family: 'Rajdhani', sans-serif;
+    }
+
+    /* Footer text */
+    .card-foot {
+      padding: 16px 24px 22px;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+    .card-foot p {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: .82rem;
+      color: rgba(255,255,255,.3);
+      letter-spacing: 1px;
+      line-height: 1.7;
+    }
+    .card-foot p strong { color: rgba(167,139,250,.7); }
+
+    .bottom-band {
+      height: 3px;
+      background: linear-gradient(90deg, var(--c5), var(--c1), var(--c3), var(--c5));
+      background-size: 300% auto;
+      animation: bandMove 4s linear infinite reverse;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: rgba(124,58,237,.4); border-radius: 2px; }
+  </style>
+</head>
+<body>
+
+<!-- Animated background -->
+<div class="bg-layer">
+  <div class="stars" id="stars"></div>
+</div>
+
+<!-- Card -->
+<div class="card-wrap">
+  <div class="card">
+    <div class="top-band"></div>
+
+    <!-- Hero -->
+    <div class="hero">
+      <div class="logo-ring">
+        <img src="/images/logo-non-bg.png" alt="Bot Logo">
+      </div>
+      <div class="welcome-txt">✦ WELCOME ✦</div>
+      <div class="sub-txt">Zero Two · Messenger Chat Bot</div>
+
+      <% iif(global.botID) { %>
+      <div class="status-pill on">
+        <div class="dot-live"></div>
+        BOT ACTIVE &amp; WORKING
+      </div>
+      <% } else { %>
+      <div class="status-pill off">
+        <i class="fas fa-power-off"></i>
+        BOT OFFLINE
+      </div>
+      <% } %>
+    </div>
+
+    <!-- Info -->
+    <div class="section-label">◈ &nbsp; DEVELOPER / ADMIN INFO &nbsp; ◈</div>
+    <div class="info-list">
+
+      <div class="info-item">
+        <div class="ii-icon ic-pu"><i class="fas fa-users"></i></div>
+        <div class="ii-text">
+          <div class="ii-label">Dev Team</div>
+          <div class="ii-value glow">┆Tєαᴍ ☣︎ нєαятℓєѕѕ┆</div>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="ii-icon ic-bl"><i class="fas fa-user-shield"></i></div>
+        <div class="ii-text">
+          <div class="ii-label">Admin</div>
+          <div class="ii-value">S1FU &nbsp;/&nbsp; S1FAT</div>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="ii-icon ic-pk"><i class="fas fa-heart"></i></div>
+        <div class="ii-text">
+          <div class="ii-label">Age</div>
+          <div class="ii-value">18+</div>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="ii-icon ic-or"><i class="fas fa-map-marker-alt"></i></div>
+        <div class="ii-text">
+          <div class="ii-label">Home</div>
+          <div class="ii-value">Khulna, Bangladesh</div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="info-item">
+        <div class="ii-icon ic-cy"><i class="fas fa-robot"></i></div>
+        <div class="ii-text">
+          <div class="ii-label">Bot Name</div>
+          <div class="ii-value glow-pink">ZERO TWO ♥️🎀</div>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="ii-icon ic-gr"><i class="fas fa-code-branch"></i></div>
+        <div class="ii-text">
+          <div class="ii-label">Bot Version</div>
+          <div class="ii-value">V3</div>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="ii-icon ic-ye"><i class="fas fa-plug"></i></div>
+        <div class="ii-text">
+          <div class="ii-label">FCA Library</div>
+          <div class="ii-value">FCA-SIFU</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-grid">
+      <div class="stat-box">
+        <div class="stat-num"><%=global.db.allThreadData.length%></div>
+        <div class="stat-lbl"><i class="fas fa-comments"></i> &nbsp;Groups</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num"><%=global.db.allUserData.length%></div>
+        <div class="stat-lbl"><i class="fas fa-users"></i> &nbsp;Users</div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="card-foot">
+      <p>
+        <strong>THANKS FOR USING ZERO TWO</strong><br>
+        Bot Active &amp; Working Properly 💜
+      </p>
+    </div>
+
+    <div class="bottom-band"></div>
+  </div>
+</div>
+
+<script>
+  // Generate stars
+  const container = document.getElementById('stars');
+  for (let i = 0; i < 120; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    const size = Math.random() * 2.5 + 0.5;
+    s.style.cssText = `
+      width:${size}px; height:${size}px;
+      top:${Math.random()*100}%;
+      left:${Math.random()*100}%;
+      --d:${(Math.random()*4+2).toFixed(1)}s;
+      --delay:-${(Math.random()*5).toFixed(1)}s;
+    `;
+    container.appendChild(s);
+  }
+</script>
+</body>
+</html>

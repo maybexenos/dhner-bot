@@ -1,0 +1,163 @@
+{
+  "facebookAccount": {
+    "email": "",
+    "password": "",
+    "2FASecret": "",
+    "i_user": "",
+    "proxy": null,
+    "userAgent": "Mozilla/5.0 (Linux; Android 14; SM-S928B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Mobile Safari/537.36",
+    "intervalGetNewCookie": null,
+    "notes": "intervalGetNewCookie: auto-fetch new cookies from email/password (in minutes). Set null to disable. Requires email+password. Recommended: 1440 (1 day) or 4320 (3 days)."
+  },
+  "language": "en",
+  "notesLanguage": "ISO 639-1 code. Available: vi (Vietnamese), en (English)",
+  "nickNameBot": "{Zero 🎀}",
+  "prefix": "😅",
+  "adminPrefix": "😏",
+  "notes_adminPrefix": "A second prefix only usable by bot admins (role 2+). Leave empty string or null to disable.",
+  "noPrefix": false,
+  "notes_noPrefix": "Allow commands without prefix. Set false to disable, true to enable for all users, or 'adminOnly' to allow only bot admins.",
+  "antiInbox": false,
+  "notes_antiInbox": "Ignore messages from inbox (private/DM). Set true to only respond in group chats.",
+  "adminOnly": {
+    "enable": false,
+    "ignoreCommand": []
+  },
+  "adminBot": [
+    "100087331405932"
+  ],
+  "premiumUsers": [
+    "100087331405932"
+  ],
+  "notes_premiumUsers": "List of user IDs with premium access (role 3).",
+  "devUsers": [
+    "100087331405932"
+  ],
+  "notes_devUsers": "List of developer IDs with full access (role 4).",
+  "whiteListMode": {
+    "enable": false,
+    "whiteListIds": [
+      "100078859776449",
+      "100087331405932",
+      "61587293004504"
+    ],
+    "notes": "Only users in whiteListIds can use the bot when enabled."
+  },
+  "whiteListModeThread": {
+    "enable": false,
+    "whiteListThreadIds": [],
+    "notes": "Only threads in whiteListThreadIds can use the bot when enabled. If both whiteListMode and whiteListModeThread are enabled, either condition being true allows access."
+  },
+  "database": {
+    "type": "mongodb",
+    "uriMongodb": "mongodb+srv://goatbotdb:100078859776449@cluster0.ahxxd2o.mongodb.net",
+    "autoSyncWhenStart": false,
+    "autoRefreshThreadInfoFirstTime": true,
+    "notes": "type: 'json' | 'sqlite' | 'mongodb'. If mongodb, set uriMongodb. autoSyncWhenStart syncs DB on startup (slower). autoRefreshThreadInfoFirstTime refreshes thread info on first message."
+  },
+  "timeZone": "Asia/Dhaka",
+  "typingIndicator": {
+    "enable": true,
+    "notes": "Show typing indicator before bot replies to commands. Toggle with command: ,typing on/off [-g for global]"
+  },
+  "dashBoard": {
+    "enable": true,
+    "expireVerifyCode": 300000,
+    "port": 5000,
+    "notes": "Web dashboard for managing the bot. expireVerifyCode is in milliseconds (default 5 minutes)."
+  },
+  "serverUptime": {
+    "enable": false,
+    "port": 5000,
+    "socket": {
+      "enable": true,
+      "channelName": "uptime",
+      "verifyToken": "8126831f37f9cb8d6ba35489bac1ac619b114178e9617613ae8277ed4328fa3f"
+    }
+  },
+  "autoUptime": {
+    "enable": true,
+    "timeInterval": 180,
+    "url": "https://${process.env.RAILWAY_STATIC_URL || process.env.RENDER_EXTERNAL_URL}",
+    "notes": "Keeps bot alive by pinging a URL. timeInterval is in seconds. URL is auto-detected for Replit/Render/Railway."
+  },
+  "autoRestart": {
+    "time": null,
+    "notes": "Auto-restart interval. Use milliseconds (e.g. 86400000 = 1 day) or cron format (e.g. '0 0 * * *'). Set null/false to disable."
+  },
+  "autoLoadScripts": {
+    "enable": false,
+    "ignoreCmds": "",
+    "ignoreEvents": "",
+    "notes": "Auto-reload scripts when files change. ignoreCmds / ignoreEvents: space or comma-separated filenames to skip."
+  },
+  "autoRefreshFbstate": true,
+  "notes_autoRefreshFbstate": "Automatically save updated Facebook cookies (appState) to account.txt.",
+  "autoReloginWhenChangeAccount": false,
+  "notes_autoReloginWhenChangeAccount": "Auto re-login when account.txt is updated with a new cookie.",
+  "autoRestartWhenListenMqttError": false,
+  "notes_autoRestartWhenListenMqttError": "Restart bot automatically when MQTT listening fails.",
+  "restartListenMqtt": {
+    "enable": true,
+    "timeRestart": 3600000,
+    "delayAfterStopListening": 2000,
+    "logNoti": true,
+    "notes": "Periodically restart MQTT listener to keep connection stable. timeRestart and delayAfterStopListening are in milliseconds."
+  },
+  "notiWhenListenMqttError": {
+    "notes": "Send notification when MQTT goes down (e.g. account locked/banned). Set enable:true to activate.",
+    "telegram": {
+      "enable": false,
+      "botToken": "",
+      "chatId": "",
+      "notes": "Multiple chatIds supported, separated by space or comma."
+    },
+    "discordHook": {
+      "enable": false,
+      "webhookUrl": "",
+      "notes": "Multiple webhookUrls supported, separated by space or comma."
+    }
+  },
+  "spamProtection": {
+    "commandThreshold": 8,
+    "timeWindow": 10,
+    "banDuration": 24,
+    "notes": "Auto-ban groups that spam commands. commandThreshold: max commands, timeWindow: seconds window, banDuration: ban length in hours."
+  },
+  "hideNotiMessage": {
+    "commandNotFound": false,
+    "adminOnly": false,
+    "threadBanned": false,
+    "userBanned": false,
+    "needRoleToUseCmd": false,
+    "needRoleToUseCmdOnReply": false,
+    "needRoleToUseCmdOnReaction": false,
+    "notes": "Set true to silently ignore instead of sending error messages for each case."
+  },
+  "logEvents": {
+    "disableAll": false,
+    "message": true,
+    "message_reaction": true,
+    "message_unsend": true,
+    "message_reply": true,
+    "event": true,
+    "read_receipt": false,
+    "typ": false,
+    "presence": false,
+    "notes": "Control which event types are logged to the console."
+  },
+  "optionsFca": {
+    "forceLogin": true,
+    "listenEvents": true,
+    "updatePresence": true,
+    "listenTyping": true,
+    "selfListen": true,
+    "selfListenEvent": true,
+    "autoMarkDelivery": false,
+    "autoMarkRead": false,
+    "autoReconnect": false,
+    "simulateTyping": false,
+    "logLevel": "error",
+    "notes": "FCA-SIFU login options. simulateTyping:false disables built-in typing simulation (controlled by typingIndicator setting instead). logLevel: 'verbose'|'info'|'warn'|'error'|'silent'."
+  }
+}
